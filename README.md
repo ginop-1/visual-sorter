@@ -2,7 +2,7 @@
 A GUI program written in Python that sorts (random) arrays 
 
 ## Disclaimer
-This project use Azure-Theme, credits to [rdbende](https://github.com/rdbende/)
+This project use Azure-Theme, credits to [rdbende](https://github.com/rdbende/Azure-ttk-theme)
 
 ## Installation
 

@@ -32,7 +32,7 @@ class App(tk.Tk):
             row=0, column=0, padx=5, pady=5, sticky='')
         self.algorithm_menu = ttk.Combobox(
             self.top_menu, textvariable=self.select_alg_menu, values=[
-                'SELECTION', 'BUBBLE', 'INSERTION'])
+                'SELECTION', 'BUBBLE', 'INSERTION', 'QUICKSORT'])
         self.algorithm_menu.grid(row=0, column=1, padx=15, pady=5)
         self.algorithm_menu.current([0])
 
@@ -77,6 +77,7 @@ class App(tk.Tk):
         for i in self.data:
             new_arr.append(i / max(self.data))
         for i, height in enumerate(new_arr):
+            # print("Draw " + str(i))
             x_left_top = i * rect_width + free_space
             y_left_top = total_height - height * (total_height-20)
             x_right_bottom = (i+1) * rect_width + free_space

@@ -10,7 +10,6 @@ def selection_sort(self):
                 self.Draw([lightGreen if x == i or x ==
                            j else rectBlue for x in range(len(self.data))])
                 sleep(self.speedScale.get())
-    self.Draw([lightGreen for x in range(len(self.data))])
 
 
 def bubble_sort(self):
@@ -21,7 +20,6 @@ def bubble_sort(self):
                 self.Draw([lightGreen if x == j or x == j +
                            1 else rectBlue for x in range(len(self.data))])
                 sleep(self.speedScale.get())
-    self.Draw([lightGreen for x in range(len(self.data))])
 
 
 def insertion_sort(self):
@@ -32,7 +30,6 @@ def insertion_sort(self):
                 self.Draw([lightGreen if x == j or x ==
                            i else rectBlue for x in range(len(self.data))])
                 sleep(self.speedScale.get())
-    self.Draw([lightGreen for x in range(len(self.data))])
 
 # quick_sort
 

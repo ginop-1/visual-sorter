@@ -1,6 +1,6 @@
 # variables
-MAX_HEIGHT = 700
-MAX_WIDTH = 1100
+MAX_HEIGHT = 900
+MAX_WIDTH = 1500
 grey = "#333333"
 lightBlue = "#77b5fe"
 lightGreen = "#00F347"

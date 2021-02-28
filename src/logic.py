@@ -11,7 +11,7 @@ def Generate(self):
     max_value = int(self.maxEntry.get())
     size = int(self.sizeEntry.get())
     for i in range(size):
-        self.data.append(int((max_value/size)*(i+1)))
+        self.data.append(randint(min_value, max_value))
     shuffle(self.data)
     self.Draw([rectBlue for x in range(len(self.data))])
 
@@ -25,4 +25,4 @@ def Start(self):
         insertion_sort(self)
     elif (self.algorithm_menu.get() == 'QUICKSORT'):
         quick_sort(self, self.data, 0, len(self.data)-1)
-        self.Draw([lightGreen for x in range(len(self.data))])
+    self.Draw([lightGreen for x in range(len(self.data))])

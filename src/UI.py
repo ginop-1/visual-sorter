@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 from ttkwidgets import TickScale
 from constant import *
 from logic import *
+from threading import Thread
 
 
 class App(tk.Tk):
@@ -17,6 +18,9 @@ class App(tk.Tk):
         super().__init__()
         self.data = []  # List that contain the data to sort
         self.select_alg_menu = tk.StringVar()
+        self.stop = False
+        self.rectangles = []
+        self.colors = []
         self.title("Array sorter")
         self.maxsize(MAX_WIDTH, MAX_HEIGHT)
         self.iconphoto(True, tk.PhotoImage(file='sorter_icon.png'))
@@ -77,16 +81,20 @@ class App(tk.Tk):
                    command=lambda: Generate(self),
                    style='Accentbutton').grid(row=1, column=6, padx=15)
         ttk.Button(self.top_menu, text="Start",
-                   command=lambda: Start(self), style='Accentbutton').grid(
-            row=0, column=6, padx=15)
+                   command=lambda: Thread(target=Start, args=(self, )).start(),
+                   style='Accentbutton').grid(row=0, column=6, padx=15)
+        ttk.Button(self.top_menu, text="Stop",
+                   command=lambda: self.Stop(),
+                   style='Accentbutton').grid(row=0, column=7, padx=15)
 
-    def Draw(self, color=list):
+    def Draw(self, color=list, generate_flag=False):
         '''
         Creation of rectangles, it takes a color[] list
         because when sorting we need to know which are the
         rectangles to draw
         '''
-        self.drawArea.delete("all")
+        if self.stop:
+            color = [rectBlue for x in range(len(self.data))]
         total_height = MAX_HEIGHT-(MAX_HEIGHT/10)  # left some space at top
         # rect_width is calculated knowing that there is
         # some free_space at the start and at the end
@@ -97,16 +105,27 @@ class App(tk.Tk):
         for i in self.data:
             # calculating relative height for canvas coordinate
             new_arr.append(i / max(self.data))
+        if generate_flag:
+            self.drawArea.delete("all")
         for i, height in enumerate(new_arr):
             x_left_top = i * rect_width + free_space
             y_left_top = total_height - height * (total_height-20)
             x_right_bottom = (i+1) * rect_width + free_space
             y_right_bottom = total_height
-            self.drawArea.create_rectangle(
+            if generate_flag:
+                self.colors = [rectBlue for x in range(int(self.sizeEntry.get()))]
+                self.rectangles.append(self.drawArea.create_rectangle(
+                x_left_top, y_left_top, x_right_bottom,
+                y_right_bottom, fill=color[i]))
+            elif self.colors[i] != color[i]:
+                self.drawArea.delete(self.rectangles[i])
+                self.rectangles[i] = self.drawArea.create_rectangle(
                 x_left_top, y_left_top, x_right_bottom,
                 y_right_bottom, fill=color[i])
-            if int(self.sizeEntry.get()) <= 50:
-                self.drawArea.create_text(
-                    x_left_top, y_left_top,
-                    anchor='sw', text=str(self.data[i]))
-        self.update_idletasks()
+        for i in range(len(self.colors)):
+            self.colors[i] = color[i]
+        # self.update_idletasks()
+
+    def Stop(self):
+        # print("stopped")
+        self.stop = True

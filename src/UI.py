@@ -113,15 +113,16 @@ class App(tk.Tk):
             x_right_bottom = (i+1) * rect_width + free_space
             y_right_bottom = total_height
             if generate_flag:
-                self.colors = [rectBlue for x in range(int(self.sizeEntry.get()))]
+                self.colors = [rectBlue for x in range(
+                    int(self.sizeEntry.get()))]
                 self.rectangles.append(self.drawArea.create_rectangle(
-                x_left_top, y_left_top, x_right_bottom,
-                y_right_bottom, fill=color[i]))
-            elif self.colors[i] != color[i]:
+                    x_left_top, y_left_top, x_right_bottom,
+                    y_right_bottom, fill=color[i]))
+            elif self.colors[i] != color[i] or i == len(new_arr)-1:
                 self.drawArea.delete(self.rectangles[i])
                 self.rectangles[i] = self.drawArea.create_rectangle(
-                x_left_top, y_left_top, x_right_bottom,
-                y_right_bottom, fill=color[i])
+                    x_left_top, y_left_top, x_right_bottom,
+                    y_right_bottom, fill=color[i])
         for i in range(len(self.colors)):
             self.colors[i] = color[i]
         # self.update_idletasks()

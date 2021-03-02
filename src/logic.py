@@ -27,4 +27,5 @@ def Start(self):
         insertion_sort(self)
     elif (self.algorithm_menu.get() == 'QUICKSORT'):
         quick_sort(self, self.data, 0, len(self.data)-1)
-    self.Draw([lightGreen for x in range(len(self.data))], generate_flag=True)
+    self.Draw([lightGreen for x in range(len(self.data))])
+    #print(self.data)

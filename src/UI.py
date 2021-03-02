@@ -28,8 +28,8 @@ class App(tk.Tk):
         # Setup of custom style
         self.style = ttk.Style(self)
         self.tk.call(
-            'source', 'Azure-ttk-theme/azure dark/azure_dark.tcl')
-        self.style.theme_use('azure_dark')
+            'source', 'Azure-ttk-theme/azure-dark.tcl')
+        self.style.theme_use('azure-dark')
 
         # top_menu contains all the interactive component (button, sliders...)
         self.top_menu = tk.Frame(self, width=MAX_WIDTH,
@@ -79,13 +79,13 @@ class App(tk.Tk):
 
         ttk.Button(self.top_menu, text="Generate",
                    command=lambda: Generate(self),
-                   style='Accentbutton').grid(row=1, column=6, padx=15)
+                   style='AccentButton').grid(row=1, column=6, padx=15)
         ttk.Button(self.top_menu, text="Start",
                    command=lambda: Thread(target=Start, args=(self, )).start(),
-                   style='Accentbutton').grid(row=0, column=6, padx=15)
+                   style='AccentButton').grid(row=0, column=6, padx=15)
         ttk.Button(self.top_menu, text="Stop",
                    command=lambda: self.Stop(),
-                   style='Accentbutton').grid(row=0, column=7, padx=15)
+                   style='AccentButton').grid(row=0, column=7, padx=15)
 
     def Draw(self, color=list, generate_flag=False):
         '''

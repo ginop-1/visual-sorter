@@ -1,24 +1,26 @@
-# Visual-sorter
+# **Visual-sorter**
 A GUI program written in Python that sorts (random) arrays 
 
-## Disclaimer
+## **Disclaimer**
 This project use Azure-Theme, credits to [rdbende](https://github.com/rdbende/Azure-ttk-theme)
 
-## Installation
+## **Installation**
+```
+$ git clone git@github.com:ginop-1/visual-sorter.git
+$ cd visual-sorter
+$ python3 -m venv env
+$ source ./env/bin/activate
+$ pip3 install -r requirements.txt
+```
 
-### Dependencies:
+### **Install theme files:**
+```
+git submodule init
+git submodule update
+```
 
-Required only for people on Linux: `sudo apt install python3-tk`
+## **Usage**
+_Run `source ./env/bin/activate` every time you want to run the program_
 
-`pip install tkwidgets`
-
-### Real install
-Cloning repo:
-* `git clone git@github.com:ginop-1/visual-sorter.git`
-
-Install theme files:
-* `git submodule init`
-* `git submodule update`
-
-### Executing the file
-You can use `./launch.sh` (linux) or `python3 src/main.py`
+### **Executing the file**
+``` ./src/main.py ```

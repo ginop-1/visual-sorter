@@ -133,3 +133,4 @@ dmypy.json
 test.txt
 test.py
 tests/
+.vscode/

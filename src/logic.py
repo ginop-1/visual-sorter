@@ -19,13 +19,13 @@ def Generate(self):
 
 def Start(self):
     self.stop = False
-    if (self.algorithm_menu.get() == 'SELECTION'):
+    if self.algorithm_menu.get() == "SELECTION":
         selection_sort(self)
-    elif (self.algorithm_menu.get() == 'BUBBLE'):
+    elif self.algorithm_menu.get() == "BUBBLE":
         bubble_sort(self)
-    elif (self.algorithm_menu.get() == 'INSERTION'):
+    elif self.algorithm_menu.get() == "INSERTION":
         insertion_sort(self)
-    elif (self.algorithm_menu.get() == 'QUICKSORT'):
-        quick_sort(self, self.data, 0, len(self.data)-1)
+    elif self.algorithm_menu.get() == "QUICKSORT":
+        quick_sort(self, self.data, 0, len(self.data) - 1)
     self.Draw([lightGreen for x in range(len(self.data))])
-    #print(self.data)
+    # print(self.data)
